@@ -1,14 +1,17 @@
+
 def authentication(username,password):
-    name="john"
-    passw="12345"
 
-    if username == name and password== passw:
-             print("login succesfull")
-             return True
-    else:
-        print("invalid username and password ")
-        return False
+    with open("login-credentials.txt","r") as file:
+        lines=file.readlines()
 
+
+    for line in lines:
+        stored_name, stored_password = line.strip().split("-")
+        if stored_name == username and stored_password == password:
+            print("Login successful")
+            return True
+        else:
+             return False   
 
 def check_balance(balance):
     return balance
